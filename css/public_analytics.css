@@ -10,7 +10,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  font-family: "Open Sans", Helvetica, arial, sans-serif;
+  font-family: "Avenir Next", Helvetica, arial, sans-serif;
   font-size: 18px;
   font-weight: 300;
   color: #222;
@@ -39,7 +39,9 @@ h3 {
 h4 {
   margin: 1em 0;
   font-size: 1.2em;
-  font-weight: 400; }
+  font-weight: 400; 
+  font-style: bold;
+  }
 
 h5 {
   font-size: 0.8em;
@@ -124,7 +126,7 @@ header {
     text-decoration: underline; }
 
 section {
-  background: #fff;
+  background: #f9f9f9;
   padding: 1em; }
   section h2 {
     font-size: 8em;
@@ -148,7 +150,7 @@ section {
   border-left: 1px solid #e4e4e4;
   border-right: 1px solid #e4e4e4;
   border-bottom: 1px solid #e4e4e4;
-  background: #fff; }
+  background: #f9f9f9; }
   .container::after {
     clear: both;
     content: "";
@@ -229,10 +231,11 @@ section {
   float: left;
   display: block;
   margin-right: 0%;
-  width: 64.28571%; }
+  /*width: 74.28571%; */
+}
   #explanation:last-child, #agencies:last-child {
     margin-right: 0; }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 968px) {
     #explanation, #agencies {
       float: left;
       display: block;
@@ -303,7 +306,12 @@ section {
   padding-bottom: 2em; }
   #realtime .chart_subtitle {
     font-size: 2.1em;
-    font-weight: 300; }
+    font-weight: 300;
+    text-decoration: none; }
+
+  #realtime .chart_subtitle a{
+    text-decoration: none; 
+  }
 
 #coming_soon {
   position: absolute;
@@ -351,7 +359,8 @@ section {
 
 #current_visitors {
   font-weight: 600;
-  text-align: center; }
+  text-align: center; 
+  font-family: "Avenir Next";}
 
 #top_100_table h3 {
   float: left;
@@ -497,5 +506,81 @@ figure figure .bar-chart {
   transition: opacity 0.3s ease-in 0.5s; }
   *[data-block].loading {
     opacity: .8; }
+
+.square{
+  width: 19%;
+  display: inline-block;
+  vertical-align: top;
+  /*height:125px;*/
+  margin-left: 10px;
+  margin-bottom: 10px;
+  /*background-color: #addc91;*/
+  text-decoration: none;
+  float: left;
+}
+.datascientists{
+  overflow: hidden;
+  margin-left: 7%;
+}
+.da{
+  overflow: hidden;
+}
+
+.dastaff{
+  width: 25%;
+  margin-left: 20%;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 10px;
+  text-decoration: none;
+  float: left;
+}
+
+a:hover {
+      text-decoration: underline; 
+}
+
+#explanation h3{
+  font-size: 28px;
+}
+.three_col .col {
+  display: inline-block;
+  width: 31.6%;
+  vertical-align: top;
+  margin-top: 1em;
+  margin-left: 20px;
+}
+.three_col{
+  margin-left: 10px;
+  margin-bottom: 50px;
+}
+
+#explanation .three_col .col .coltitle{
+  font-size: 24px;
+  font-style: bold;
+}
+#explanation #aboutus{
+  font-size: 34px;
+  font-family: "Avenir Next";
+
+}
+#explandata{
+  line-height: 30px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+
+}
+.aboutstaff{
+  width: 15%;
+  margin-left: 15%;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 10px;
+  text-decoration: none;
+  float: left;
+}
+
+
 
 /*# sourceMappingURL=public_analytics.css.map */

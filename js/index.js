@@ -156,6 +156,7 @@
           .text(formatBigNumber(total));
       }),
 
+
     // the browsers block is a table
     "browsers": renderBlock()
       .transform(function(d) {
@@ -193,16 +194,50 @@
           .html("")
           .append("a")
             .attr("target", "_blank")
+            .attr("title", function(d) {
+              return d.page_title;
+            })
             .attr("href", function(d) {
-              return exceptions[d.domain] || ("http://" + d.domain);
+              return exceptions[d.page] || ("http://www.consumerfinance.gov/" + d.page);
             })
             .text(function(d) {
-              return title_exceptions[d.domain] || d.domain;
+              return title_exceptions[d.page] || d.page_title;
             });
       })
       .render(barChart()
         .label(function(d) { return d.domain; })
         .value(function(d) { return +d.visits; })
+        .scale(function(values) {
+          var max = d3.max(values);
+          return d3.scale.linear()
+            .domain([0, 1, d3.max(values)])
+            .rangeRound([0, 1, 100]);
+        })
+        .format(formatCommas)),
+
+      "social": renderBlock()
+      .transform(function(d) {
+        return d.data;
+      })
+      .on("render", function(selection, data) {
+        // turn the labels into links
+        selection.selectAll(".label")
+          .each(function(d) {
+            d.text = this.innerText;
+          })
+          .html("")
+          .append("a")
+            .attr("target", "_blank")
+            .attr("title", function(d) {
+              return d.social;
+            })
+            .text(function(d) {
+              return d.social;
+            });
+      })
+      .render(barChart()
+        .label(function(d) { return d.social; })
+        .value(function(d) { return +d.visitors; })
         .scale(function(values) {
           var max = d3.max(values);
           return d3.scale.linear()
@@ -229,7 +264,7 @@
               return d.page_title;
             })
             .attr("href", function(d) {
-              return exceptions[d.page] || ("http://" + d.page);
+              return exceptions[d.page] || ("http://www.consumerfinance.gov" + d.page);
             })
             .text(function(d) {
               return title_exceptions[d.page] || d.page_title;
