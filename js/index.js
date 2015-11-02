@@ -237,7 +237,7 @@
       })
       .render(barChart()
         .label(function(d) { return d.social; })
-        .value(function(d) { return +d.visitors; })
+        .value(function(d) { return +d.visits; })
         .scale(function(values) {
           var max = d3.max(values);
           return d3.scale.linear()
