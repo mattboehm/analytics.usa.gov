@@ -6,26 +6,6 @@ permalink: /
 <html lang="en">
   <head>
 
-    <!--
-
-    Hi! Welcome to our source code.
-
-    This dashboard uses data from the Digital Analytics Program, a US
-    government team inside the General Services Administration, an independent
-    federal agency.
-
-
-    For a detailed tech breakdown of how 18F and friends built this site:
-
-    https://18f.gsa.gov/2015/03/19/how-we-built-analytics-usa-gov/
-
-
-    This is a fully open source project, and your contributions are welcome.
-
-    Frontend static site: https://github.com/GSA/analytics.usa.gov
-    Backend data reporting: https://github.com/18F/analytics-reporter
-
-    -->
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -33,28 +13,20 @@ permalink: /
 
     <link rel="stylesheet" href="/css/public_analytics.css">
 
-    <meta name="twitter:site" content="@{{ site.twitter }}">
-    <meta name="twitter:creator" content="@{{ site.twitter }}">
+
     <meta property="og:type" content="website" />
 
     <meta property="og:url" content="{{ site.url }}" />
     <link rel="canonical" href="{{ site.url }}" />
 
-    <title>{{ site.title }}</title>
+    <title>Real-Time Analytics | CFPB</title>
     <meta property="og:title" content="{{ site.title }}" />
     <meta property="og:site_name" content="{{ site.title }}" />
 
     <meta name="description" content="{{ site.description }}">
     <meta property="og:description" content="{{ site.description }}" />
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:image" content="{{ site.url }}/images/share-image.png" />
 
-
-
-    <!--[if lte IE 9]>
-    <script src="/js/vendor/aight.v2.min.js"></script>
-    <![endif]-->
     <script src="/js/vendor/d3.v3.min.js"></script>
     <script src="/js/vendor/q.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,33 +36,19 @@ permalink: /
 
     <header id="usa_dot_gov_header">
       <div class="header_container">
-        <h1>analytics<a href="http://www.usa.gov">.usa.gov</a></h1>
-        <a id="about" href="#explanation">About this site</a>
+        
+            <img id="logo"
+               class="logo__no-js"
+               src="images/logo.svg"
+               alt="Consumer Financial Protection Bureau"
+               width="262"
+               height="66">
+          
       </div>
       <div id="color_bar"></div>
     </header>
 
     <div class="container">
-      <!--
-      JavaScript block hooks look for any element with both data-block and
-      data-source attributes:
-
-      <section data-block="users" data-source="path/to/data.json">
-        The "loading", "loaded", and "error" classes are set on this element
-        the data-source URL is loaded. Then the renderer is called on the first
-        child of the block with the "data" class:
-
-        <div class="data">
-        </div>
-
-        Some renderers expect to be called on HTML tables, in which
-        case you would use:
-
-        <table class="data">
-        </table>
-
-      </section>
-      -->
 
       <div id="main_data">
         <section id="realtime"
@@ -98,7 +56,7 @@ permalink: /
           data-source="{{ site.data_url }}/realtime.json"
           data-refresh="15">
           <h2 id="current_visitors" class="data">...</h2>
-          <div class="chart_subtitle">people on government websites now</div>
+          <div class="chart_subtitle">visitors on <a href="http://www.consumerfinance.gov/">www.consumerfinance.gov</a> now</div>
         </section>
 
         <section class="section_headline visits_today">
@@ -179,6 +137,7 @@ permalink: /
             <li><a role="tab" aria-selected="true" href="#top-pages-realtime">Now</a></li>
             <li><a role="tab" href="#top-pages-7-days">7 Days</a></li>
             <li><a role="tab" href="#top-pages-30-days">30 Days</a></li>
+            <!-- <li><a role="tab" href="#social">Social</a></li> -->
           </ul>
 
           <figure class="top-pages" id="top-pages-realtime" role="tabpanel"
@@ -186,114 +145,150 @@ permalink: /
             data-source="{{ site.data_url }}/top-pages-realtime.json"
             data-refresh="15">
             <h5><strong>Pages</strong><br/>
-            <em>People on a single, specific government page now.</em></h5>
+            <em>People on a single, consumerfinance.gov page now.</em></h5>
             <div class="data bar-chart">
             </div>
           </figure>
 
           <figure class="top-pages" id="top-pages-7-days" role="tabpanel"
             data-block="top-pages"
-            data-source="{{ site.data_url }}/top-domains-7-days.json">
-            <h5><strong>Domains</strong><br/>
-            <em>Total visits over the last week to government domains, which includes traffic to all pages within that domain.</em></h5>
+            data-source="{{ site.data_url }}/top-pages-7-days.json">
+            <h5><strong>Top Pages in the last 7 days</strong><br/>
+            <em>Total visits over the last week pages on <a href="http://www.consumerfinance.gov/">www.consumerfinance.gov</a></em></h5>
             <div class="data bar-chart">
             </div>
           </figure>
 
           <figure class="top-pages" id="top-pages-30-days" role="tabpanel"
             data-block="top-pages"
-            data-source="{{ site.data_url }}/top-domains-30-days.json">
-            <h5><strong>Domains</strong><br/>
-              <em>Total visits over the last month to government domains, which includes traffic to all pages within that domain.</em></h5>
+            data-source="{{ site.data_url }}/top-pages-30-days.json">
+            <h5><strong>Top Pages in the last 30 days</strong><br/>
+              <em>Total visits over the last month pages on <a href="http://www.consumerfinance.gov/">www.consumerfinance.gov</a></em></h5>
             <div class="data bar-chart">
             </div>
-          </figure>
+          </figure >
+
+         <!--  <figure class="top-pages" id="social" role="tabpanel"
+            data-block="social"
+            data-source="{{ site.data_url }}/social-test.json">
+             <h5><strong>Social Media 30 days</strong><br/>
+            <em>Top Social Media Sites that linked to <a href="http://www.consumerfinance.gov/">www.consumerfinance.gov</a></em></h5>
+            <div class="data bar-chart">
+            </div>
+          </figure> -->
 
         </section>
       </div>
 
       <section id="explanation">
+        <h3 id="aboutus">About the Quantitative Analytics Group</h3>
+        <p>Quantitative Analytics is a subgroup of the <a href="http://team.cfpb.local/wiki/index.php/Data_Team">Data Team</a>. It serves as a centralized analytics resource for the rest of the Bureau. The Quantitative Analytics Group includes members with expertise in two different roles, which work closely together:  
+        </p>
+          <ul id="explandata" >
+            <li>Data Science</li>
+            <li>Digital Analytics</li>
+          </ul>
+      <h3>Data Science</h3>
+      <p>Data science is a newly named field encompassing statistics, software development, and intelligent systems. It incorporates techniques such as advanced statistical analysis, predictive modeling, machine learning, and geospatial analysis, in order to discover trends and insights in “Big Data” stores, such as datasets that reside on Hadoop clusters or MPP (massively-parallel processing) relational databases. Those same techniques can be applied to smaller datasets as well.
+        <br>
+        <br>
+      One of the pivotal elements of data science is data quality, which is driven by implementing scientific research design principles, and using effective data collection methods. Data scientists employ careful hypothesis formulation and testing, use advanced data-discovery tools, and often invent new products, processes, or measurement tools to best suit the task at hand.
+      Data science is more than simply data analysis; data science makes good data analysis possible.   Data science is specifically focused on leveraging advanced techniques and innovative methods to help frame and answer business questions, and make the outcomes of advanced analytics accessible to business audiences.</p>   
+      <p>Work we do: </p>
+      <div class="three_col">
+          <div class="col">
+            <center><img src="images/realtime.jpg"></center>
+              <h4 class="coltitle">Data collection</h4>
+                <p>especially in terms of leveraging behavioral science in the interest of maximizing data collection quality, and improving consumer responsiveness to and engagement with Bureau products</p>
+          </div>
+          <div class="col">
+            <center><img src="images/Data-cleansing.jpg"></center>
+              <h4 class="coltitle">Data Cleansing</h4>
+                <p> also refered to as 'data scrubbing' is the process of removing incorrect, incomplete, inproperly formatted data from a database</p>
+          </div>
+          <div class="col">           
+            <center><img src="images/predictive-modeling-Recovered.jpg"></center>
+              <h4 class="coltitle">Predictive Modeling</h4>
+                <p>including data visualization, machine learning, natural language processing, information retrieval, and many other aspects of data mining.</p>
+          </div>
+      </div>
+      <p>Data Scientists: </p>
+        <div class="datascientists">
+          <a href="http://team.cfpb.local/staff/person/AndereggT/" class="square">
+            <img src="images/staff_pics/ben_b.jpg" alt>
+              <p>BJ Bloom</p>            
+          </a>
+           <a href="http://team.cfpb.local/staff/person/BurkeCH/" class="square">
+            <img src="images/staff_pics/chris_b.png" alt>
+              <p>Chris Burke</p>
+          </a>
+          <a href="http://team.cfpb.local/staff/person/grigoryanv/" class="square">
+            <img src="images/staff_pics/hank_c.jpg" alt>
+              <p>Vahan Grigoryan</p>        
+          </a>
+             <a href="http://team.cfpb.local/staff/person/HsuMI/" class="square">
+            <img src="images/staff_pics/ming_h.jpg" alt>
+              <p> Ming Hsu </p>    
+          </a>
+           <a href="http://team.cfpb.local/staff/person/hughesr/" class="square">
+            <img src="images/staff_pics/jackson_h.jpg" alt>
+              <p>Jackson Hughes</p>      
+          </a>
+        </div>
+      <div class="da">
+        <h3>Digital Analytics</h3>
+          <p>Analyzing the many facets of CFPB’s public website is another key function performed by the Data Analytics unit. Our Google Analytics Specialists provide analysis, insight, and reporting of website metrics that support Bureau stakeholders in making up-to-the-minute, well-informed strategic decisions.
+          <br>
+          Web Analytics Process
+          <br>
+          <ol>
+              <li><em>Goals</em>- Identify the specific goals for the project and the stakeholders</li>
+              <li><em>Strategy Alignment</em>- Map goals to strategic initiatives</li>
+              <li><em>Metrics</em>- Define the detailed metrics that will support each goal</li>
+              <li><em>Toolset</em> - Identify all software needed for future deliverables (Google Analytics, YouTube, Facebook Insights) and all partners who will be involved for project development and reporting upon launch</li>
+              <li><em>Timelines</em>- Identify relevant project timelines, launch dates, and Quality Assurance timeline for tag verification (dev code push, staging code push, live code push)</li>
+              <li><em>Benchmarking</em>- Benchmark current/historical performance, so that tangible outcomes can be identified via website metrics. Target setting can be done if enough historical data is available for forecasting, and if there</li>
+              <li><em>Reporting</em>- Identify reports needed and the cadence for delivery to stakeholders</li>
+          </ol> 
+          The digital analytics specialists collaborate with business units to identify goals for their digital products and the metrics to measure success. Currently there is emphasis on data collection and on creating powerful and useful monthly, weekly, ad-hoc, and campaign-based visualizations for multiple teams within the Bureau.   As we enhance our digital analytics capabilities, we plan to enhance our Google Tag Manager (GTM) customizable tracking usage, and develop a robust search engine optimization (SEO) strategy site-wide.
+          <br>
+          <br>
+          We release monthly dashboards, that can be found here <a href="http://team.cfpb.local/wiki/index.php/Web_and_digital_analytics_dashboards"> Web and digital analytics dashboards </a> You can also learn more by going to the <a href="http://team.cfpb.local/wiki/index.php/Web_Analytics">Web Analytics</a> page.</p>
+        
+          
+          <a href="http://team.cfpb.local/staff/person/HoldenK/" class="dastaff">
+            <img src="images/staff_pics/hank_c.jpg" alt>
+             <p>Kelley Holden</p>      
+          </a>
+        
+             <a href="http://team.cfpb.local/staff/person/purvisb/" class="dastaff">
+            <img src="images/staff_pics/beth_p.jpg" alt>
+              <p>Beth Anne Purvis</p>
+          </a>
+      </div>
+      <div class="aboutthissite">
         <h3>About this Site</h3>
-        <p>
-          This data provides a window into how people are interacting with the government online. The data comes from a unified Google Analytics account for U.S. federal government agencies known as the <a href="https://www.digitalgov.gov/services/dap/">Digital Analytics Program</a>. This program helps government agencies understand how people find, access, and use government services online. The program <a href="https://www.digitalgov.gov/services/dap/common-questions-about-dap-faq/#part-4">does not track individuals</a>, and <a href="https://support.google.com/analytics/answer/2763052?hl=en">anonymizes the IP addresses</a> of visitors.
+        <p>This site is an extension of 
+          <a href="https://analytics.usa.gov/">analytics.usa.gov</a> and the <a href="https://github.com/18F/analytics-reporter">analytics-reporter</a> tool that was developed by 18F. This site displays data published on CFPB's Google Analytics account, and has room for many more graphs!
+          <br>
+          <br>
+          This application was tweaked and deployed by employees on the <a href="http://team.cfpb.local/wiki/index.php/Data_Team">Data Team</a> Please feel free to reach out to anyone on this page to either contribute to this page, or have data on our GA account that you would like to see in realtime!
         </p>
+         <a href="http://team.cfpb.local/staff/person/AndereggT/" class="aboutstaff">
+            <img src="images/staff_pics/tim_a.png" alt>
+            <p>Tim Anderegg - Senior Data Engineer</p>   
+          </a>
+          <a href="http://team.cfpb.local/staff/person/TorresA/" class="aboutstaff">
+            <img src="images/staff_pics/Torres_Dri.125x125.jpg" alt>
+            <p>Dri Torres - Intern</p>   
+          </a>
+          <a href="http://team.cfpb.local/wiki/index.php/Data_Team" class="aboutstaff">
+            <img src="images/staff_pics/doozer_character_cfpb.png" alt>
+            <p>Doozer - unofficial mascot of the Data Team</p>   
+          </a>
 
-        <p>
-          Not every government website is represented in this data. Currently, the Digital Analytics Program collects web traffic from around <a href="https://analytics.usa.gov/data/live/second-level-domains.csv">400 executive branch government domains</a>, across <a href="https://analytics.usa.gov/data/sites.csv">over 4000 total websites</a>, including every cabinet department. We continue to pursue and add more sites frequently; to add your site, <a href="mailto:DAP@gsa.gov">email the Digital Analytics Program</a>.
-        </p>
+      </div>
 
-        <p>
-          <strong>Top 20 data:</strong> "Now" data includes traffic to a specific, single page&mdash;whereas "7 Days" and "30 Days" data includes traffic to a domain <strong>and</strong> all pages within that domain.
-        </p>
-
-        <p>
-          This open source project is in the public domain, which means that this website and its data are free for you to use without restriction. You can find the <a href="https://github.com/GSA/analytics.usa.gov">code for this website</a> and the <a href="https://github.com/18F/analytics-reporter">code behind the data collection</a> on GitHub.
-        </p>
-
-        <p>
-          We plan to expand the data made available here. If you have any suggestions, or spot any issues or bugs, please <a href="https://github.com/GSA/analytics.usa.gov/issues">open an issue on GitHub</a> or contact the <a href="mailto:DAP@gsa.gov">Digital Analytics Program</a>.
-        </p>
-      </section>
-
-      <section id="data_download">
-        <h3>Download the Data</h3>
-
-        <p>
-          You can download the data that powers the charts above, in JSON format.
-        </p>
-
-        <ul>
-          <li>
-            <a href="{{ site.data_url }}/realtime.json">
-              People online right now</a>
-            (Updated every minute)
-          </li>
-          <li>
-            <a href="{{ site.data_url }}/today.json">
-              Visits every hour today</a>
-            (Updated every hour)
-          </li>
-          <li>
-            <a href="{{ site.data_url }}/devices.json">
-              Visits by desktop/mobile/tablet devices over 90 days</a>
-            (Updated every day)
-          </li>
-          <li>
-            <a href="{{ site.data_url }}/os.json">
-              Visits broken down by Operating System over 90 days</a>
-            (Updated every day)
-          </li>
-          <li>
-            <a href="{{ site.data_url }}/windows.json">
-              Visits broken down by Windows version over 90 days</a>
-            (Updated every day)
-          </li>
-          <li>
-            <a href="{{ site.data_url }}/browsers.json">
-              Visits broken down by browser over 90 days</a>
-            (Updated every day)
-          </li>
-          <li>
-            <a href="{{ site.data_url }}/ie.json">
-              Visits broken down by Internet Explorer version over 90 days</a>
-            (Updated every day)
-          </li>
-          <li>
-            <a href="{{ site.data_url }}/top-pages-realtime.json">
-              Top 20 pages, ranked by visitors online now</a>
-            (Updated every minute)
-          </li>
-          <li>
-            <a href="{{ site.data_url }}/top-domains-7-days.json">
-              Top 20 domains, ranked by visits over 7 days</a>
-            (Updated every day)
-          </li>
-          <li>
-            <a href="{{ site.data_url }}/top-domains-30-days.json">
-              Top 20 domains, ranked by visits over 30 days</a>
-            (Updated every day)
-          </li>
-        </ul>
       </section>
 
     </div>

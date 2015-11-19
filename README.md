@@ -1,4 +1,4 @@
-## analytics.usa.gov
+## CFPB's implementation of 18F's analytics reporter 
 
 A project to publish website analytics for the US federal government.
 
