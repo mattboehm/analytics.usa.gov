@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'jekyll'
+gem 'jekyll', :github => 'jekyll/jekyll', :branch => 'pygments-upgrade'
 
 gem 'bourbon'
 gem 'sass'
