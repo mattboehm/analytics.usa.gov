@@ -206,7 +206,7 @@
       })
       .render(barChart()
         .label(function(d) { return d.domain; })
-        .value(function(d) { return +d.visits; })
+        .value(function(d) { return +d.pageviews; })
         .scale(function(values) {
           var max = d3.max(values);
           return d3.scale.linear()
